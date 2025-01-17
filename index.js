@@ -3,9 +3,9 @@ import { connectToDB } from "./src/database/dataSource.js";
 
 const PORT = process.env.PORT || 5000;
 
-connectToDB()
+const server = connectToDB()
   .then(() => {
-    app.listen(PORT, () => {
+    return app.listen(PORT, () => {
       console.log(`Server started at port ${PORT}`);
     });
   })
@@ -13,3 +13,5 @@ connectToDB()
     console.error("Error during initialization:", err.message);
     process.exit(1); // Exit the process on failure
   });
+
+export default server;
